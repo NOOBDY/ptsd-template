@@ -3,11 +3,11 @@
 #include "Core/Context.hpp"
 
 int main(int, char**) {
-    auto context = Core::Context::GetInstance();
+    auto ctx = Core::Context::GetInstance();
     App app;
 
-    while (!context->GetExit()) {
-        context->Update();
+    while (!ctx->GetExit()) {
+        ctx->Update();
         switch (app.GetCurrentState()) {
             case App::State::START:
                 app.Start();
@@ -19,7 +19,7 @@ int main(int, char**) {
 
             case App::State::END:
                 app.End();
-                context->SetExit(true);
+                ctx->SetExit(true);
                 break;
         }
     }
